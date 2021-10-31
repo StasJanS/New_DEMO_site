@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for m in mov %}
+    <h2>{{ m.title }}</h2>
+        {% if m.image %}
+        <p><img src="{{ m.image.url }}" alt="СКОРО БУДЕТ ФОТО"></p>
+            {% endif %}
+        <p><strong>Год:</strong> {{ m.year }}</p>
+    <p><strong>Жанр:</strong>{% for k in m.genre.all %}
+        {{ k.name }}/
+    {% endfor %}
+    </p>
+    <p><strong>Страна:</strong>{% for d in m.country.all %}
+        {{ d.name }}/
+    {% endfor %}
+    </p>
+    <p><strong>Краткое описание:</strong> {{ m.description }}</p>
+
+    {% endfor %}
+{% endblock content %}

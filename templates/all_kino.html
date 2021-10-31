@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Все фильмы нашего сайта:</h1>
+    {% for i in all_kino %}
+        <p><a href="{% url 'movie' i.title %}"><strong>{{ i.title }}</strong></a>, {{ i.year }}</p>
+        <p><strong>Жанр:</strong>{% for k in i.genre.all %}
+            {{ k.name }}/
+        {% endfor %}
+        </p>
+        <p><strong>Страна:</strong>{% for d in i.country.all %}
+            {{ d.name }}/
+        {% endfor %}
+        </p>
+        <p><strong>Краткое описание:</strong> {{ i.description|truncatewords:10 }}</p>
+        <br>
+        <hr>
+
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Года</h1>
+{% for y in year %}
+    <p><a href="{% url 'movie' y.title %}"><strong>{{ y.title }}</strong></a>, {{ y.year }}</p>
+    <p><strong>Жанр:</strong>{% for k in y.genre.all %}
+        {{ k.name }}/
+    {% endfor %}
+    </p>
+    <p><strong>Страна:</strong>{% for d in y.country.all %}
+        {{ d.name }}/
+    {% endfor %}
+    </p>
+    <p><strong>Краткое описание:</strong> {{ y.description|truncatewords:10 }}</p>
+    <br>
+    <hr>
+{% endfor %}
+{% endblock content %}

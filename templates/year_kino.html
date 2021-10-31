@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Года:</h1>
+{% for y in year %}
+    <p><a href="{% url 'year' y.id %}">{{ y.date }}</a></p>
+    {% endfor %}
+{% endblock content %}
